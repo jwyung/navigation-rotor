@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import './channelsList.css';
 
 const ChannelsList = props => {
   return (

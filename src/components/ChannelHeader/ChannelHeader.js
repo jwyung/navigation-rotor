@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import './channelHeader.css';
 
 const ChannelHeader = props => {
   return (

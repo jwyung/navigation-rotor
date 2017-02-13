@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import './messagePane.css';
 
 const MessagePane = props => {
   return (
