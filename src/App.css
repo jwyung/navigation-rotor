@@ -5,6 +5,10 @@ body,
   height: 100%;
 }
 
+body {
+  font-family: "LatoWeb", sans-serif;
+}
+
 .app {
   display: flex;
 }

@@ -4,6 +4,7 @@ import ChannelsList from '../components/ChannelsList/ChannelsList';
 import ChannelHeader from '../components/ChannelHeader/ChannelHeader';
 import MessagePane from '../components/MessagePane/MessagePane';
 import Sidebar from '../components/Sidebar/Sidebar';
+import '../lato.css';
 import '../App.css';
 
 class App extends Component {
