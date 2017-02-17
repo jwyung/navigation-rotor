@@ -25,7 +25,7 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <ChannelsList />
+        <ChannelsList channels={this.state.channels} />
         <div className="content">
           <ChannelHeader />
           <div className="channel-content">
