@@ -4,6 +4,8 @@
   padding-top: 1rem;
   padding-bottom: 1rem;
   padding-right: 1rem;
+}
+
 /* Team Header Component */
 .team-header {
   position: relative;
@@ -33,4 +35,13 @@
   display: flex;
   flex-direction: column;
 }
+
+/* Channel Navigation */
+.nav-heading {
+  font-size: 0.8rem;
+}
+
+.channel-nav {
+  display: flex;
+  flex-direction: column;
 }
