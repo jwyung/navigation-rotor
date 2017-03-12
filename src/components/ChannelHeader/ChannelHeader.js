@@ -8,8 +8,12 @@ import './channelHeader.css';
 const ChannelHeader = props => {
   const attrs = props.hasFocus ? {} : { tabIndex: -1 };
 
+  const handleFocusToChannelHeader = (e) => {
+    props.handleFocus(e, 'channel-header');
+  };
+
   return (
-    <section className="channel-header" tabIndex="0">
+    <section className="channel-header" tabIndex="0" onKeyDown={handleFocusToChannelHeader}>
       <div>
         <h2 className="current-channel">
           <Button className="channel-name" text="#placeholder" hasFocus={props.hasFocus} />

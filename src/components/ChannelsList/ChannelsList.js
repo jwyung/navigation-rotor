@@ -5,8 +5,12 @@ import Navigation from './Navigation';
 import './channelsList.css';
 
 const ChannelsList = props => {
+  const handleFocusToChannelsList = (e) => {
+    props.handleFocus(e, 'channels-list');
+  };
+
   return (
-    <section className="channels-list" tabIndex="0">
+    <section className="channels-list" tabIndex="0" onKeyDown={handleFocusToChannelsList}>
       <TeamHeader hasFocus={props.hasFocus} />
 
       <UtilityViewControls hasFocus={props.hasFocus} />
