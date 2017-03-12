@@ -7,7 +7,7 @@ const Navigation = props => {
       <h3 className="nav-heading">{props.headingName}</h3>
       <nav className="channel-nav" aria-label={props.navAriaLabel}>
         {props.channelNames.map(function(channelName, index) {
-          return <ChannelButton channelName={channelName} key={channelName} />
+          return <ChannelButton channelName={channelName} key={channelName} hasFocus={props.hasFocus} />
         })}
       </nav>
     </section>

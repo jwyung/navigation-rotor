@@ -14,17 +14,20 @@ const ChannelsList = props => {
       <Navigation
         channelNames={props.channels.starred}
         headingName={"STARRED"}
-        navAriaLabel={"starred channels"} />
+        navAriaLabel={"starred channels"}
+        hasFocus={props.hasFocus} />
 
       <Navigation
         channelNames={props.channels.regular}
         headingName={"CHANNELS"}
-        navAriaLabel="channels" />
+        navAriaLabel="channels"
+        hasFocus={props.hasFocus} />
 
       <Navigation
         channelNames={props.channels.directMessage}
         headingName={"DIRECT MESSAGES"}
-        navAriaLabel="direct messages" />
+        navAriaLabel="direct messages"
+        hasFocus={props.hasFocus} />
     </section>
   );
 }

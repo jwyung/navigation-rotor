@@ -1,8 +1,9 @@
 import React, { PropTypes } from 'react';
+import Button from '../Shared/Button';
 
 const ChannelButton = props => {
   return (
-    <button type="button">#{props.channelName}</button>
+  	<Button text={`#${props.channelName}`} />
   );
 }
 

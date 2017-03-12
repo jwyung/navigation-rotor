@@ -1,10 +1,11 @@
 import React, { PropTypes } from 'react';
+import Button from '../Shared/Button';
 
 const UtilityViewControls = props => {
   return (
     <div className="utility-view-controls">
-      <button className="all-unreads-btn" type="button">All Unreads</button>
-      <button className="all-threads-btn" type="button">All Threads</button>
+    	<Button text="All Unreads" className="all-unreads-btn" />
+    	<Button text="All Threads" className="all-threads-btn" />
     </div>
   );
 }
