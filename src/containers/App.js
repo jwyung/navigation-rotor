@@ -19,18 +19,20 @@ class App extends Component {
       directMessage: [
         'Slackbot', 'Jonathan', 'Grace', 'Michelle', 'Edwin', 'Bella'
       ]
-    }
+    },
+
+    focus: 'none'
   }
 
   render() {
     return (
       <div className="app">
-        <ChannelsList channels={this.state.channels} />
+        <ChannelsList channels={this.state.channels} hasFocus={this.state.focus === 'channelsList'} />
         <div className="content">
-          <ChannelHeader />
+          <ChannelHeader hasFocus={this.state.focus === 'channelHeader'} />
           <div className="channel-content">
-            <MessagePane />
-            <Sidebar />
+            <MessagePane hasFocus={this.state.focus === 'messagePane'} />
+            <Sidebar hasFocus={this.state.focus === 'sideBar'} />
           </div>
         </div>
       </div>

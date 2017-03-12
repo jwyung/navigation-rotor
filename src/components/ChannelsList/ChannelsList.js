@@ -6,7 +6,7 @@ import './channelsList.css';
 
 const ChannelsList = props => {
   return (
-    <section className="channels-list">
+    <section className="channels-list" tabIndex="0">
       <TeamHeader />
 
       <UtilityViewControls />
