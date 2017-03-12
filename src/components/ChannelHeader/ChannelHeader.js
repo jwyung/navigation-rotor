@@ -12,14 +12,14 @@ const ChannelHeader = props => {
     <section className="channel-header" tabIndex="0">
       <div>
         <h2 className="current-channel">
-          <Button className="channel-name" text="#placeholder" />
+          <Button className="channel-name" text="#placeholder" hasFocus={props.hasFocus} />
         </h2>
-        <InfoControls />
+        <InfoControls hasFocus={props.hasFocus} />
       </div>
       <div className="utility-group">
-        <CogControls />
+        <CogControls hasFocus={props.hasFocus} />
         <input type="text" placeholder="Search" {...attrs} />
-        <GenericControls />
+        <GenericControls hasFocus={props.hasFocus} />
       </div>
     </section>
   );

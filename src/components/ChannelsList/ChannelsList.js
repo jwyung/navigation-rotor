@@ -7,9 +7,9 @@ import './channelsList.css';
 const ChannelsList = props => {
   return (
     <section className="channels-list" tabIndex="0">
-      <TeamHeader />
+      <TeamHeader hasFocus={props.hasFocus} />
 
-      <UtilityViewControls />
+      <UtilityViewControls hasFocus={props.hasFocus} />
 
       <Navigation
         channelNames={props.channels.starred}

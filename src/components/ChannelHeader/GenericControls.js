@@ -4,9 +4,9 @@ import Button from '../Shared/Button';
 const GenericControls = props => {
 	return (
     <div>
-      <Button className="channel-header-btn" text="Show Activity" />
-      <Button className="channel-header-btn" text="Show Starred Items" />
-      <Button className="channel-header-btn" text="More Items" />
+      <Button className="channel-header-btn" text="Show Activity" hasFocus={props.hasFocus} />
+      <Button className="channel-header-btn" text="Show Starred Items" hasFocus={props.hasFocus} />
+      <Button className="channel-header-btn" text="More Items" hasFocus={props.hasFocus} />
     </div>
   );
 }

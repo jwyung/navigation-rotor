@@ -3,7 +3,7 @@ import Button from '../Shared/Button';
 
 const ChannelButton = props => {
   return (
-  	<Button text={`#${props.channelName}`} />
+  	<Button text={`#${props.channelName}`} hasFocus={props.hasFocus} />
   );
 }
 
