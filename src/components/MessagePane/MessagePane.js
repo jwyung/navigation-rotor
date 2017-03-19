@@ -3,7 +3,12 @@ import './messagePane.css';
 
 const MessagePane = props => {
   return (
-    <section className="message-pane" role="main" tabIndex="0">
+    <section
+    	className="message-pane"
+    	role="main"
+    	data-component-focusable=""
+    	tabIndex="0"
+    >
     </section>
   );
 }

@@ -1,4 +1,4 @@
 .sidebar {
-	border: 1px solid green;
 	flex-basis: 300px;
+	border-left: 1px solid #c9c9c9;
 }

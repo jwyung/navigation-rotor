@@ -10,7 +10,12 @@ const ChannelsList = props => {
   };
 
   return (
-    <section className="channels-list" tabIndex="0" onKeyDown={handleFocusToChannelsList}>
+    <section
+      className={`channels-list${props.hasFocus ? ' component--focus' : ''}`}
+      data-component-focusable=''
+      tabIndex="0"
+      onKeyDown={handleFocusToChannelsList}
+    >
       <TeamHeader hasFocus={props.hasFocus} />
 
       <UtilityViewControls hasFocus={props.hasFocus} />

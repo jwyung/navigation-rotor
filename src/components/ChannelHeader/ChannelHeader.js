@@ -13,16 +13,21 @@ const ChannelHeader = props => {
   };
 
   return (
-    <section className="channel-header" tabIndex="0" onKeyDown={handleFocusToChannelHeader}>
+    <section
+      className={`channel-header${props.hasFocus ? ' component--focus' : ''}`}
+      data-component-focusable=""
+      tabIndex="0"
+      onKeyDown={handleFocusToChannelHeader}
+    >
       <div>
         <h2 className="current-channel">
-          <Button className="channel-name" text="#placeholder" hasFocus={props.hasFocus} />
+          <Button className="channel-name" text="#free-food" hasFocus={props.hasFocus} isNaked={true} />
         </h2>
         <InfoControls hasFocus={props.hasFocus} />
       </div>
       <div className="utility-group">
         <CogControls hasFocus={props.hasFocus} />
-        <input type="text" placeholder="Search" {...attrs} />
+        <input className="search" type="text" placeholder="Search" {...attrs} />
         <GenericControls hasFocus={props.hasFocus} />
       </div>
     </section>

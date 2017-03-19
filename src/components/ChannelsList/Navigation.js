@@ -3,7 +3,7 @@ import ChannelButton from './ChannelButton'
 
 const Navigation = props => {
   return (
-    <section>
+    <section className="channel-nav-section">
       <h3 className="nav-heading">{props.headingName}</h3>
       <nav className="channel-nav" aria-label={props.navAriaLabel}>
         {props.channelNames.map(function(channelName, index) {

@@ -1,9 +1,9 @@
 .channels-list {
-  border: 1px solid darkblue;
   flex-basis: 220px;
   padding-top: 1rem;
   padding-bottom: 1rem;
   padding-right: 1rem;
+  border-right: 1px solid #c9c9c9;
 }
 
 /* Team Header Component */
@@ -24,24 +24,32 @@
   margin-top: 0.125rem;
 }
 
-.notifications-btn {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-
 /* Utility View Controls */
 .utility-view-controls {
   display: flex;
   flex-direction: column;
+  padding-left: 1rem;
 }
 
 /* Channel Navigation */
+.channel-nav-section {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+}
+
 .nav-heading {
   font-size: 0.8rem;
+  opacity: 0.6;
 }
 
 .channel-nav {
   display: flex;
   flex-direction: column;
+}
+
+.channels-list-btn {
+  text-align: left;
+  font-weight: 900;
+  height: 1.5rem;
 }

@@ -6,7 +6,6 @@ const TeamHeader = props => {
     <header className="team-header">
       <h1 className="team-name">Hachi</h1>
       <p className="user-name">Hachi Yung</p>
-      <Button className="notifications-btn" text="notifications" hasFocus={props.hasFocus} />
     </header>
   );
 }
