@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import ChannelButton from './ChannelButton'
+import ConversationButton from './ConversationButton'
 
 const Navigation = props => {
   const isSpotlightComponent = props.focus === 'channels-list-navigation';
@@ -24,20 +24,26 @@ const Navigation = props => {
         data-component-focusable=""
         {...navigationAttrs}
       >
-        {props.channelNames.map(function(channelName, index) {
-          return <ChannelButton
-                   channelName={channelName}
-                   key={channelName}
-                   focusLevel={childFocusLevel}
-                 />
-        })}
+        <ul className="conversation-list">
+          {props.conversations.map(function(conversation, index) {
+            return <ConversationButton
+                     name={conversation.name}
+                     time={conversation.time}
+                     key={index}
+                     focusLevel={childFocusLevel}
+                   />
+          })}
+        </ul>
       </nav>
     </section>
   );
 }
 
 Navigation.propTypes = {
-  channelNames: PropTypes.arrayOf(PropTypes.string).isRequired,
+  conversations: PropTypes.arrayOf(PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      time: PropTypes.string.isRequired,
+    })).isRequired,
   headingName: PropTypes.string.isRequired,
   navAriaLabel: PropTypes.string.isRequired,
 };

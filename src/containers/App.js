@@ -2,23 +2,32 @@ import React, { Component } from 'react';
 import logo from '../logo.svg';
 import '../lato.css';
 import '../App.css';
-import ChannelsList from '../components/ChannelsList/ChannelsList';
+import ConversationsList from '../components/ChannelsList/ConversationsList';
 import ChannelHeader from '../components/ChannelHeader/ChannelHeader';
 import MessagePane from '../components/MessagePane/MessagePane';
-import Sidebar from '../components/Sidebar/Sidebar';
 import modality from '../libs/focusRing';
 
 class App extends Component {
   state = {
-    channels: {
+    conversations: {
+      favorites: [
+        { name: 'Free food', time: '6:20 PM' },
+        { name: 'Free toys', time: '2:45 PM' },
+        { name: 'Free massages', time: '8:20 PM' },
+        { name: 'Dog parks', time: '7:23 AM' },
+        { name: 'Human tricking', time: '3:02 PM' },
+        { name: 'Sleeping', time: '9:58 AM' },
+        { name: 'Owner training', time: '7:28 PM' },
+        { name: 'Jonathan', time: '10:23 PM' },
+        { name: 'Grace', time: '11:22 PM' },
+      ],
       regular: [
-        'daily-walk', 'house-rules', 'territory-marking', 'pooping-orientation'
-      ],
-      starred: [
-        'free-food', 'free-toys', 'dog-parks', 'human-tricking', 'sleeping', 'owner-training'
-      ],
-      directMessage: [
-        'Slackbot', 'Jonathan', 'Grace', 'Michelle', 'Edwin', 'Bella'
+        { name: 'Daily walk', time: '3:11 PM' },
+        { name: 'House rules', time: '5:25 PM' },
+        { name: 'Territory marking', time: '1:58 PM' },
+        { name: 'Pooping orientation', time: '11:18 AM' },
+        { name: 'Michelle', time: '6:36 PM' },
+        { name: 'Edwin', time: '9:15 PM' },
       ]
     },
 
@@ -82,20 +91,22 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <ChannelsList
-          channels={this.state.channels}
+        <ConversationsList
+          conversationsList={this.state.conversations}
           focus={this.state.focus}
           focusLevel={1}
           handleFocus={this.handleFocus}
         />
         <div className="content">
           <ChannelHeader
-            hasFocus={this.state.focus === 'channel-header'}
+            focusLevel={1}
             handleFocus={this.handleFocus}
           />
           <div className="channel-content">
-            <MessagePane hasFocus={this.state.focus === 'message-pane'} />
-            <Sidebar hasFocus={this.state.focus === 'sidebar'} />
+            <MessagePane
+              focusLevel={1}
+              handleFocus={this.handleFocus}
+            />
           </div>
         </div>
       </div>

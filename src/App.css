@@ -25,6 +25,7 @@ body {
 	font-weight: inherit;
 	line-height: inherit;
 }
+
 .content {
   display: flex;
   flex-direction: column;
@@ -34,6 +35,10 @@ body {
 .channel-content {
   display: flex;
   flex-grow: 1;
+}
+
+.scrollable {
+  overflow: auto;
 }
 
 /* We're going to handle our own focus indicator */
