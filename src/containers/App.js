@@ -6,6 +6,7 @@ import ChannelsList from '../components/ChannelsList/ChannelsList';
 import ChannelHeader from '../components/ChannelHeader/ChannelHeader';
 import MessagePane from '../components/MessagePane/MessagePane';
 import Sidebar from '../components/Sidebar/Sidebar';
+import modality from '../libs/focusRing';
 
 class App extends Component {
   state = {
@@ -70,6 +71,10 @@ class App extends Component {
     if (componentElement) {
       componentElement.focus();
     }
+  }
+
+  componentDidMount() {
+    modality();
   }
 
   render() {
