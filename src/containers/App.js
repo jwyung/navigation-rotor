@@ -22,7 +22,9 @@ class App extends Component {
       ]
     },
 
-    focus: 'none'
+    componentFocus: 'none',
+    focus: '',
+    focusableComponents: []
   };
 
   /*
@@ -82,7 +84,8 @@ class App extends Component {
       <div className="app">
         <ChannelsList
           channels={this.state.channels}
-          hasFocus={this.state.focus === 'channels-list'}
+          focus={this.state.focus}
+          focusLevel={1}
           handleFocus={this.handleFocus}
         />
         <div className="content">

@@ -5,38 +5,55 @@ import Navigation from './Navigation';
 import './channelsList.css';
 
 const ChannelsList = props => {
-  const handleFocusToChannelsList = (e) => {
+  const isSpotlightComponent = props.focus === 'channels-list';
+  const childFocusLevel = isSpotlightComponent ? 1 : 0;
+
+  const handleFocus = (e) => {
+    e.stopPropagation();
     props.handleFocus(e, 'channels-list');
+  };
+
+  const channelsListAttrs = {
+    className: `channels-list${isSpotlightComponent ? ' component--focus' : ''}`,
+    tabIndex: props.focusLevel || isSpotlightComponent ? '0' : '-1',
+    onKeyDown: handleFocus
   };
 
   return (
     <section
-      className={`channels-list${props.hasFocus ? ' component--focus' : ''}`}
-      data-component-focusable=''
-      tabIndex="0"
-      onKeyDown={handleFocusToChannelsList}
+      data-component-focusable=""
+      {...channelsListAttrs}
     >
-      <TeamHeader hasFocus={props.hasFocus} />
+      <TeamHeader />
 
-      <UtilityViewControls hasFocus={props.hasFocus} />
+      <UtilityViewControls focusLevel={childFocusLevel} />
 
       <Navigation
         channelNames={props.channels.starred}
         headingName={"STARRED"}
         navAriaLabel={"starred channels"}
-        hasFocus={props.hasFocus} />
+        focus={props.focus}
+        focusLevel={childFocusLevel}
+        handleFocus={props.handleFocus}
+      />
 
       <Navigation
         channelNames={props.channels.regular}
         headingName={"CHANNELS"}
         navAriaLabel="channels"
-        hasFocus={props.hasFocus} />
+        focus={props.focus}
+        focusLevel={childFocusLevel}
+        handleFocus={props.handleFocus}
+      />
 
       <Navigation
         channelNames={props.channels.directMessage}
         headingName={"DIRECT MESSAGES"}
         navAriaLabel="direct messages"
-        hasFocus={props.hasFocus} />
+        focus={props.focus}
+        focusLevel={childFocusLevel}
+        handleFocus={props.handleFocus}
+      />
     </section>
   );
 }
