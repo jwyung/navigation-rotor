@@ -31,22 +31,23 @@ class App extends Component {
       ]
     },
 
-    componentFocus: 'none',
-    focus: '',
-    focusableComponents: []
+    focus: [null],
   };
 
   /*
     Supports two different yet familiar keys (`Enter` and `Escape`) to
     handle Component-Based Focus Management
    */
-  handleFocus = (e, component) => {
+  handleFocus = (e) => {
     switch(e.key) {
       // When the user has focus on a component, pressing the
       // `enter` key should begin interacting with a component.
       // Focus to move to the first focusable element in said component.
       case 'Enter':
-        this.setState({ focus: component });
+        let focusStackEnterCopy = this.state.focus.slice();
+
+        focusStackEnterCopy.unshift(e.target);
+        this.setState({ focus: focusStackEnterCopy });
         this.focusOnFirstInteractiveElement();
         break;
 
@@ -54,8 +55,11 @@ class App extends Component {
       // `esc` key should stop interacting with said component or element.
       // Focus to move to the direct parent compoent.
       case 'Escape':
-        this.setState({ focus: 'none' });
-        this.focusOnParentComponent(component);
+        let focusStackEscapeCopy = this.state.focus.slice();
+
+        const poppedFocus = focusStackEscapeCopy.shift();
+        this.setState({ focus: focusStackEscapeCopy });
+        this.focusOnParentComponent(poppedFocus);
         break;
     }
   };
@@ -76,12 +80,8 @@ class App extends Component {
     When we stop interacting with interactive element or child
     component, we need to bring focus to the immediate parent component.
    */
-  focusOnParentComponent(component) {
-    const componentElement = document.getElementsByClassName(component)[0];
-
-    if (componentElement) {
-      componentElement.focus();
-    }
+  focusOnParentComponent(focusElement) {
+    focusElement.focus();
   }
 
   componentDidMount() {
@@ -102,12 +102,10 @@ class App extends Component {
             focusLevel={1}
             handleFocus={this.handleFocus}
           />
-          <div className="channel-content">
-            <MessagePane
-              focusLevel={1}
-              handleFocus={this.handleFocus}
-            />
-          </div>
+          <MessagePane
+            focusLevel={1}
+            handleFocus={this.handleFocus}
+          />
         </div>
       </div>
     );

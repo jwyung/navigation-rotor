@@ -32,11 +32,6 @@ body {
   flex-grow: 1;
 }
 
-.channel-content {
-  display: flex;
-  flex-grow: 1;
-}
-
 .scrollable {
   overflow: auto;
 }
@@ -55,6 +50,6 @@ body {
 	box-shadow: inset 0 0 0 2px rgb(121, 185, 252), inset 0 0 0 4px rgb(59, 153, 252);	
 }
 
-.component--focus[data-component-focusable] {
+.is-spotlight-component[data-component-focusable] {
 	box-shadow: inset 0 0 0 1px rgb(121, 185, 252);
 }

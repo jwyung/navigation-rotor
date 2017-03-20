@@ -28,7 +28,7 @@
 }
 
 /* Conversation Navigation */
-.channel-nav-section {
+.convo-nav-section {
   padding-top: 1rem;
   padding-bottom: 1rem;
   padding-left: 0.5rem;
@@ -41,7 +41,7 @@
   text-align: center;
 }
 
-.channel-nav {
+.convo-nav {
   display: flex;
   flex-direction: column;
 }
@@ -60,7 +60,7 @@
   height: 3rem;
 }
 
-.channels-list-btn {
+.convo-list-btn {
   text-align: left;
   font-weight: 900;
 }

@@ -1,54 +1,59 @@
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import ChatHeader from './ChatHeader';
 import UtilityControls from './UtilityControls';
 import Navigation from './Navigation';
 import './conversationsList.css';
 
-const ConversationsList = props => {
-  const isSpotlightComponent = props.focus === 'convo-list';
-  const childFocusLevel = isSpotlightComponent ? 1 : 0;
+export default class ConversationsList extends Component {
+  isSpotlightComponent() {
+    return this.props.focus[0] === this.refs['convo-list'];
+  }
 
-  const handleFocus = (e) => {
-    e.stopPropagation();
-    props.handleFocus(e, 'convo-list');
-  };
+  getChildFocusLevel() {
+    return this.isSpotlightComponent() ? 1 : 0;
+  }
 
-  const channelsListAttrs = {
-    className: `convo-list-component${isSpotlightComponent ? ' component--focus' : ''}`,
-    tabIndex: props.focusLevel || isSpotlightComponent ? '0' : '-1',
-    onKeyDown: handleFocus
-  };
+  getConvoListAttrs() {
+    return {
+      className: `convo-list-component${this.isSpotlightComponent() ? ' is-spotlight-component' : ''}`,
+      tabIndex: this.props.focusLevel || this.isSpotlightComponent() ? '0' : '-1',
+      onKeyDown: this.props.handleFocus
+    };
+  }
 
-  return (
-    <section
-      data-component-focusable=""
-      {...channelsListAttrs}
-    >
-      <ChatHeader />
+  render() {
+    return (
+        <section
+          data-component-focusable=""
+          ref="convo-list"
+          {...this.getConvoListAttrs()}
+        >
+          <ChatHeader />
 
-      <div className="scrollable">
-        <UtilityControls focusLevel={childFocusLevel} />
+          <div className="scrollable">
+            <UtilityControls focusLevel={this.getChildFocusLevel()} />
 
-        <Navigation
-          conversations={props.conversationsList.favorites}
-          headingName={"FAVORITES"}
-          navAriaLabel={"starred channels"}
-          focus={props.focus}
-          focusLevel={childFocusLevel}
-          handleFocus={props.handleFocus}
-        />
+            <Navigation
+              conversations={this.props.conversationsList.favorites}
+              headingName={"FAVORITES"}
+              navAriaLabel={"favorite conversations"}
+              focus={this.props.focus}
+              focusLevel={this.getChildFocusLevel()}
+              handleFocus={this.props.handleFocus}
+            />
 
-        <Navigation
-          conversations={props.conversationsList.regular}
-          headingName={"CONVERSATIONS"}
-          navAriaLabel="channels"
-          focus={props.focus}
-          focusLevel={childFocusLevel}
-          handleFocus={props.handleFocus}
-        />
-      </div>
-    </section>
-  );
+            <Navigation
+              conversations={this.props.conversationsList.regular}
+              headingName={"CONVERSATIONS"}
+              navAriaLabel="conversations"
+              focus={this.props.focus}
+              focusLevel={this.getChildFocusLevel()}
+              handleFocus={this.props.handleFocus}
+            />
+          </div>
+        </section>
+      );
+  }
 }
 
 ConversationsList.propTypes = {
@@ -63,5 +68,3 @@ ConversationsList.propTypes = {
     })),
   }).isRequired,
 };
-
-export default ConversationsList;
