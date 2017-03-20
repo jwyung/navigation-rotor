@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from '../logo.svg';
 import '../lato.css';
 import '../App.css';
-import ConversationsList from '../components/ChannelsList/ConversationsList';
+import ConversationsList from '../components/ConversationsList/ConversationsList';
 import ChannelHeader from '../components/ChannelHeader/ChannelHeader';
 import MessagePane from '../components/MessagePane/MessagePane';
 import modality from '../libs/focusRing';
