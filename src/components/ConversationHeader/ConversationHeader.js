@@ -3,7 +3,7 @@ import InfoControls from './InfoControls';
 import CogControls from './CogControls';
 import GenericControls from './GenericControls';
 import Button from '../Shared/Button';
-import './channelHeader.css';
+import './conversationHeader.css';
 
 const ChannelHeader = props => {
   const attrs = props.hasFocus ? {} : { tabIndex: -1 };

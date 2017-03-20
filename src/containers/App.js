@@ -3,7 +3,7 @@ import logo from '../logo.svg';
 import '../lato.css';
 import '../App.css';
 import ConversationsList from '../components/ConversationsList/ConversationsList';
-import ChannelHeader from '../components/ChannelHeader/ChannelHeader';
+import ChannelHeader from '../components/ConversationHeader/ConversationHeader';
 import MessagePane from '../components/MessagePane/MessagePane';
 import modality from '../libs/focusRing';
 
