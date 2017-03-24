@@ -99,6 +99,7 @@ class App extends Component {
         />
         <div className="content">
           <ChannelHeader
+            focus={this.state.focus}
             focusLevel={1}
             handleFocus={this.handleFocus}
           />

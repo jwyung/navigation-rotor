@@ -1,43 +1,57 @@
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Button from '../Shared/Button';
 import './conversationHeader.css';
 
-const ChannelHeader = props => {
-  const attrs = props.hasFocus ? {} : { tabIndex: -1 };
+export default class ChannelHeader extends Component {
+  isSpotlightComponent() {
+    return this.props.focus[0] === this.refs['convo-header'];
+  }
 
-  const handleFocusToChannelHeader = (e) => {
-    props.handleFocus(e, 'channel-header');
-  };
+  getChildFocusLevel() {
+    return this.isSpotlightComponent() ? 1 : 0;
+  }
 
-  return (
-    <section
-      className={`convo-header${props.hasFocus ? ' component--focus' : ''}`}
-      data-component-focusable=""
-      tabIndex="0"
-      onKeyDown={handleFocusToChannelHeader}
-    >
-      <Button
-        className="favorite-convo-btn"
-        hasFocus={props.hasFocus}
-        isNaked={true}
-        ariaLabel="Favorite this conversation"
-        text={String.fromCharCode(9829)}
-      />
-      <h2 className="current-convo">Free food</h2>
-      <div className="utility-group">
-        <input className="search" type="text" placeholder="Search" {...attrs} />
+  getConvoHeaderAttrs() {
+    return {
+      className: `convo-header-component${this.isSpotlightComponent() ? ' is-spotlight-component' : ''}`,
+      tabIndex: this.props.focusLevel || this.isSpotlightComponent() ? '0' : '-1',
+      onKeyDown: this.props.handleFocus
+    };
+  }
+
+  getInputAttrs() {
+    return this.getChildFocusLevel() ? {} : { tabIndex: -1 };
+  }
+
+  render() {
+    return (
+      <section
+        data-component-focusable=""
+        ref="convo-header"
+        {...this.getConvoHeaderAttrs()}
+      >
         <Button
-          hasFocus={props.hasFocus}
+          className="favorite-convo-btn"
+          focusLevel={this.getChildFocusLevel()}
           isNaked={true}
-          ariaLabel="Show conversation information"
-          text="Info"
+          ariaLabel="Favorite this conversation"
+          text={String.fromCharCode(9829)}
         />
-      </div>
-    </section>
-  );
+        <h2 className="current-convo">Free food</h2>
+        <div className="utility-group">
+          <input
+            className="search"
+            type="text"
+            placeholder="Search"
+            {...this.getInputAttrs()} />
+          <Button
+            focusLevel={this.getChildFocusLevel()}
+            isNaked={true}
+            ariaLabel="Show conversation information"
+            text="Info"
+          />
+        </div>
+      </section>
+    );
+  }
 }
-
-ChannelHeader.propTypes = {
-};
-
-export default ChannelHeader;

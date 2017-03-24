@@ -1,4 +1,4 @@
-.convo-header {
+.convo-header-component {
   position: relative;
   display: flex;
   flex-basis: 3.875rem;
@@ -17,7 +17,7 @@
   transform: translateX(-50%);
 }
 
-.convo-header .utility-group {
+.convo-header-component .utility-group {
   display: flex;
   align-items: center;
   margin-right: 1rem;
