@@ -1,7 +1,4 @@
 import React, { PropTypes } from 'react';
-import InfoControls from './InfoControls';
-import CogControls from './CogControls';
-import GenericControls from './GenericControls';
 import Button from '../Shared/Button';
 import './conversationHeader.css';
 
@@ -14,21 +11,27 @@ const ChannelHeader = props => {
 
   return (
     <section
-      className={`channel-header${props.hasFocus ? ' component--focus' : ''}`}
+      className={`convo-header${props.hasFocus ? ' component--focus' : ''}`}
       data-component-focusable=""
       tabIndex="0"
       onKeyDown={handleFocusToChannelHeader}
     >
-      <div>
-        <h2 className="current-channel">
-          <Button className="channel-name" text="#free-food" hasFocus={props.hasFocus} isNaked={true} />
-        </h2>
-        <InfoControls hasFocus={props.hasFocus} />
-      </div>
+      <Button
+        className="favorite-convo-btn"
+        hasFocus={props.hasFocus}
+        isNaked={true}
+        ariaLabel="Favorite this conversation"
+        text={String.fromCharCode(9829)}
+      />
+      <h2 className="current-convo">Free food</h2>
       <div className="utility-group">
-        <CogControls hasFocus={props.hasFocus} />
         <input className="search" type="text" placeholder="Search" {...attrs} />
-        <GenericControls hasFocus={props.hasFocus} />
+        <Button
+          hasFocus={props.hasFocus}
+          isNaked={true}
+          ariaLabel="Show conversation information"
+          text="Info"
+        />
       </div>
     </section>
   );
